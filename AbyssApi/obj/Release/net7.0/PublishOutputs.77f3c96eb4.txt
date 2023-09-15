@@ -1,0 +1,11 @@
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\AbyssApi.exe
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\appsettings.json
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\AbyssApi.dll
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\AbyssApi.deps.json
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\AbyssApi.runtimeconfig.json
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\AbyssApi.pdb
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\djida\source\repos\AbyssApi\AbyssApi\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

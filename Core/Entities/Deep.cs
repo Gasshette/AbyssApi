@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Entities
 {
-    public class Post
+    public class Deep
     {
         public int Id { get; set; }
 
@@ -17,5 +17,7 @@ namespace Core.Entities
         public DateTime Date { get; set; }
 
         public string? Text { get; set; }
+
+        public virtual Account? Account { get; set; }
     }
 }

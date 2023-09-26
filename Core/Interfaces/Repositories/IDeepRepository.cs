@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces.Repositories
 {
-    public interface IPostRepository
+    public interface IDeepRepository
     {
-        public IEnumerable<Post> GetAll();
+        public IEnumerable<Deep> GetAll();
+        public void Post(Deep post);
+        public void Put(Deep post);
     }
 }

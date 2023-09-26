@@ -17,7 +17,7 @@ public partial class AbyssDbContext : DbContext
 
     public virtual DbSet<Account> Accounts { get; set; }
 
-    public virtual DbSet<Post> Posts { get; set; }
+    public virtual DbSet<Deep> Deeps { get; set; }
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -29,18 +29,26 @@ public partial class AbyssDbContext : DbContext
         {
             entity.ToTable("Account");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.HasIndex(e => e.Guid, "IX_Account").IsUnique();
+
             entity.Property(e => e.Identifier).HasMaxLength(16);
             entity.Property(e => e.Name).HasMaxLength(30);
         });
 
-        modelBuilder.Entity<Post>(entity =>
+        modelBuilder.Entity<Deep>(entity =>
         {
-            entity.ToTable("Post");
+            entity.HasKey(e => e.Id).HasName("PK_Post");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.ToTable("deep");
+
             entity.Property(e => e.Date).HasColumnType("smalldatetime");
             entity.Property(e => e.Text).HasMaxLength(300);
+
+            entity.HasOne(d => d.Account).WithMany(p => p.Deeps)
+                .HasPrincipalKey(p => p.Guid)
+                .HasForeignKey(d => d.AccountGuid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Post_Account");
         });
 
         OnModelCreatingPartial(modelBuilder);

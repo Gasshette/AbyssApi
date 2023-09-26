@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Infrastructure.Models;
 
-public partial class Post
+public partial class Deep
 {
     public int Id { get; set; }
 
@@ -14,4 +14,6 @@ public partial class Post
     public DateTime Date { get; set; }
 
     public string? Text { get; set; }
+
+    public virtual Account Account { get; set; } = null!;
 }

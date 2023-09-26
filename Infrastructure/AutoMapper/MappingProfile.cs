@@ -12,7 +12,8 @@ namespace Infrastructure.AutoMapper
     public class MappingProfile: Profile
     {
         public MappingProfile() {
-            CreateMap<Core.Entities.Post, Post>().ReverseMap();
+            CreateMap<Core.Entities.Deep, Deep>().ReverseMap();
+            CreateMap<Core.Entities.Account, Account>().ReverseMap();
         }
     }
 }

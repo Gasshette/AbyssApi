@@ -12,5 +12,6 @@ namespace Core.Interfaces.Repositories
         public IEnumerable<Deep> GetAll();
         public void Post(Deep post);
         public void Put(Deep post);
+        public void Delete(int id);
     }
 }

@@ -64,5 +64,16 @@ namespace Infrastructure.Repositories
             }
 
         }
+
+        public void Delete(int id)
+        {
+            Deep deep = _context.Deeps.Find((Deep d) => d.Id == id);
+
+            if (deep != null)
+            {
+                _context.Remove(id);
+                _context.SaveChanges();
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace AbyssApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeepsController : Controller
+    public class DeepsController : ControllerBase
     {
         public IDeepRepository _deepRepository;
 
@@ -19,14 +19,8 @@ namespace AbyssApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Deep>> Get()
         {
-            try
-            {
-                IEnumerable<Deep> deeps = _deepRepository.GetAll();
-                return Ok(deeps);
-            }catch (Exception ex)
-            {
-                throw ex;
-            }
+            IEnumerable<Deep> deeps = _deepRepository.GetAll();
+            return Ok(deeps);
         }
 
         [HttpPost]

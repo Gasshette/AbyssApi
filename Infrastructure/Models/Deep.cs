@@ -15,5 +15,5 @@ public partial class Deep
 
     public string? Text { get; set; }
 
-    public virtual Account Account { get; set; } = null!;
+    public virtual Account? Account { get; set; }
 }

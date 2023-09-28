@@ -31,13 +31,13 @@ namespace AbyssApi.Controllers
         }
 
         [HttpPut]
-        public ActionResult<Deep> Put([FromBody] Deep post)
+        public ActionResult<Deep> Put([FromBody] Deep put)
         {
-            _deepRepository.Put(post);
-            return Ok(post);
+            _deepRepository.Put(put);
+            return Ok(put);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult<Deep> Delete(int id)
         {
             _deepRepository.Delete(id);

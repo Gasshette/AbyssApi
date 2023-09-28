@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
 
         public IEnumerable<C.Deep> GetAll()
         {
-            IIncludableQueryable<Deep, Account> query = _context.Set<Deep>().Include(p => p.Account);
+            IIncludableQueryable<Deep, Account?> query = _context.Set<Deep>().OrderByDescending(d => d.Id).Include(p => p.Account);
             IEnumerable<Deep> deeps = query.Select(p => new Deep
             {
                 Text = p.Text,
@@ -32,7 +32,7 @@ namespace Infrastructure.Repositories
                 Guid = p.Guid,
                 Date = p.Date,
                 AccountGuid = p.AccountGuid,
-                Account = new Account
+                Account = p.Account != null ? null : new Account
                 {
                     Id = p.Account.Id,
                     Name = p.Account.Name,
@@ -54,7 +54,8 @@ namespace Infrastructure.Repositories
 
         public void Put(C.Deep deep)
         {
-            Deep deepContext = _context.Deeps.Where(p => p.Id == deep.Id).AsNoTracking().FirstOrDefault();
+            Deep? deepContext = _context.Deeps.Where(p => p.Id == deep.Id).AsNoTracking().FirstOrDefault();
+
             if (deepContext != null)
             {
                 deepContext.Account = null;
@@ -67,11 +68,11 @@ namespace Infrastructure.Repositories
 
         public void Delete(int id)
         {
-            Deep deep = _context.Deeps.Find((Deep d) => d.Id == id);
+            Deep? deep = _context.Deeps.SingleOrDefault(d => d.Id == id);
 
             if (deep != null)
             {
-                _context.Remove(id);
+                _context.Remove(deep);
                 _context.SaveChanges();
             }
         }

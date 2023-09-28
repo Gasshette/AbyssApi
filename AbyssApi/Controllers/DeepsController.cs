@@ -19,8 +19,14 @@ namespace AbyssApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Deep>> Get()
         {
-            IEnumerable<Deep> deeps = _deepRepository.GetAll();
-            return Ok(deeps);
+            try
+            {
+                IEnumerable<Deep> deeps = _deepRepository.GetAll();
+                return Ok(deeps);
+            }catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPost]

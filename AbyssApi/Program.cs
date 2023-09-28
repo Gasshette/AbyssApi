@@ -14,10 +14,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IDeepRepository, DeepRepository>();
 
+var connection = String.Empty;
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Development.json");
+    connection = builder.Configuration.GetConnectionString("AzureSqlServer");
+}
+else
+{
+    connection = Environment.GetEnvironmentVariable("AzureSqlServer");
+}
+
 builder.Services.AddDbContext<AbyssDbContext>(options =>
 {
-    string azureAbyssConnectionString = builder.Configuration.GetConnectionString("AzureSqlServer");
-    options.UseSqlServer(azureAbyssConnectionString);
+    options.UseSqlServer(connection);
 });
 
 var app = builder.Build();
